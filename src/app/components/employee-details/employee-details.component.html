@@ -1,0 +1,49 @@
+<div class="main-container">
+
+    <button mat-button class="back-btn" routerLink="/">
+        <mat-icon>arrow_back</mat-icon> Back
+    </button>
+
+    <mat-card class="employee-card">
+        <mat-card-title>Employee Details</mat-card-title>
+
+        <table class="info-table">
+            <tr>
+                <th>Full Name</th>
+                <td>{{ employee.name }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ employee.email }}</td>
+            </tr>
+            <tr>
+                <th>Department</th>
+                <td>{{ employee.department }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ employee.status }}</td>
+            </tr>
+        </table>
+
+        <h3>Equipment</h3>
+        <table class="equipment-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of employee.equipments">
+                    <td>{{ item.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <mat-card-actions *ngIf="employee.status !== 'OFFBOARDED'">
+            <button mat-raised-button color="warn" (click)="openOffboardDialog()">Offboard</button>
+        </mat-card-actions>
+
+    </mat-card>
+
+</div>

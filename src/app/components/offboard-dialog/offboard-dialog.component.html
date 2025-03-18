@@ -1,0 +1,55 @@
+<div class="dialog-header">
+    <h2>Offboard</h2>
+</div>
+
+<form [formGroup]="offboardForm" (ngSubmit)="submit()" class="dialog-form">
+
+    <mat-form-field appearance="outline">
+        <mat-label>Receiver</mat-label>
+        <input matInput formControlName="receiver">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" (keypress)="numbersOnly($event)">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Street Line</mat-label>
+        <input matInput formControlName="streetLine1">
+    </mat-form-field>
+
+    <div class="inline-fields">
+        <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" (keypress)="lettersOnly($event)">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Postal Code</mat-label>
+            <input matInput formControlName="postalCode">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <input matInput formControlName="country" (keypress)="lettersOnly($event)">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Notes</mat-label>
+        <textarea matInput formControlName="notes" rows="2"></textarea>
+    </mat-form-field>
+
+</form>
+
+<div class="dialog-footer">
+    <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="offboardForm.invalid"
+        (click)="submit()">Confirm</button>
+</div>
